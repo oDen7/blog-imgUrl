@@ -30,7 +30,7 @@ jobs:
         
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.0.0
-        env:
+        with:
          # 部署到你的目标仓库，这里就是你的仓库名
           REPO: git@github.com:oDen7/blog-imgUrl.git
           # 部署到 gh-pages 分支
