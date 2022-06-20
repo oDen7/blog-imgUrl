@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: rm -rf README.md;echo '# blog-imgUrl' >> README.md;PATTERN="^\.(jpg|gif|jpeg|png|webp)+$";for project in `ls ${GITHUB_WORKSPACE}`;do  if [[ "${project}" =~ $PATTERN ]];then echo -e "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md';echo -e "[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done
+        run: rm -rf README.md;echo '# blog-imgUrl' >> README.md;PATTERN="^\.(jpg|gif|jpeg|png|webp)+$";for project in `ls ${GITHUB_WORKSPACE}`;do  if [[ "${project}" =~ $PATTERN ]];then echo -e "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md';echo -e "[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done;cat README.md
         shell: bash
         
       - name: Deploy
