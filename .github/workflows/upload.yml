@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run:  rm -rf root;mkdir root;rm -rf README.md;echo '# blog-imgUrl' >> README.md;for project in `ls ${GITHUB_WORKSPACE}`;do  if [ "${project}" != 'README.md' ];then echo -e "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md';echo -e "[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done
+        run: rm -rf README.md;echo '# blog-imgUrl' >> README.md;PATTERN="^\.(jpg|gif|jpeg|png|webp)+$";for project in `ls ${GITHUB_WORKSPACE}`;do  if [[ "${project}" =~ $PATTERN ]];then echo -e "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md';echo -e "[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done
         shell: bash
         
       - name: Deploy
@@ -36,5 +36,5 @@ jobs:
           # 部署到 gh-pages 分支
           BRANCH: gh-pages
           # 部署目录为 VuePress 的默认输出目录
-          FOLDER: ./root
+          FOLDER: ./
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
