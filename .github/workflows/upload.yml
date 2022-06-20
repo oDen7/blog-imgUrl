@@ -25,4 +25,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: ls $GITHUB_WORKSPACE
+        run:  for project  in `ls $GITHUB_WORKSPACE` do echo "$project" done
