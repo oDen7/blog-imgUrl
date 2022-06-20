@@ -29,7 +29,7 @@ jobs:
         shell: bash
         
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.3.3
+        uses: JamesIves/github-pages-deploy-action@4.0.0
         env:
          # 部署到你的目标仓库，这里就是你的仓库名
           REPO: git@github.com:oDen7/blog-imgUrl.git
