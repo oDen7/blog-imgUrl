@@ -25,4 +25,5 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run:  for project  in `ls $GITHUB_WORKSPACE` do echo "$project" done
+        run:  rm -rf README.md;echo '# blog-imgUrl' >> README.md;for project in `ls ./`;do  if [ "${project}" != 'README.md' ];then echo "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})\n\n[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done
+        shell: bash
