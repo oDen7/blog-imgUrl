@@ -25,11 +25,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run:  rm -rf README.md;echo '# blog-imgUrl' >> README.md;for project in `ls ${GITHUB_WORKSPACE}`;do  if [ "${project}" != 'README.md' ];then echo "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})\n\n[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done;cat README.md
+        run:  rm -rf README.md;echo '# blog-imgUrl' >> README.md;for project in `ls ${GITHUB_WORKSPACE}`;do  if [ "${project}" != 'README.md' ];then echo -e "![](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md';echo -e "[https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project}](https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/${project})" >> 'README.md'; fi done
         shell: bash
         
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.0.0
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
          # 部署到你的目标仓库，这里就是你的仓库名
           REPO: git@github.com:oDen7/blog-imgUrl.git
